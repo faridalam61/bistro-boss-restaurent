@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PopularMenu from "../Pages/Home/PopularMenu";
 
 function MenuSection({ cover, title, description, menu }) {
@@ -21,9 +22,9 @@ function MenuSection({ cover, title, description, menu }) {
       </div>
       <div className="text-center mb-10">
         {menu && (
-          <button className="btn btn-secondary">
+          <Link to={`/order/${title}`} className="btn btn-secondary">
             ORDER YOUR FAVOURITE FOOD
-          </button>
+          </Link>
         )}
       </div>
     </>
