@@ -1,7 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate} from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Header() {
+  const {user, logOut} = useContext(AuthContext)
+const navigate = useNavigate()
   const menuItems = (
     <>
       <li>
@@ -12,6 +15,11 @@ function Header() {
       </li>
     </>
   );
+  const handleLogout = ()=>{
+logOut()
+.then(()=> navigate('/login'))
+.catch(error => console.log(error.message))
+  }
   return (
     <div className="navbar fixed bg-black z-20 text-white opacity-50">
       <div className="navbar-start">
@@ -45,7 +53,11 @@ function Header() {
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        {
+          user ? <button onClick={handleLogout} className="btn">Logout</button> : <Link to="/login" className="btn">Get started</Link>
+        }
+        
+        
       </div>
     </div>
   );
