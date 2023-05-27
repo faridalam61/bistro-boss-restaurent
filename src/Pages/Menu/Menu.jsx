@@ -6,6 +6,7 @@ import pizzaBg from "../../assets/menu/pizza-bg.jpg";
 import saladBg from "../../assets/menu/salad-bg.jpg";
 import soupdBg from "../../assets/menu/soup-bg.jpg";
 import useMenu from "../../Hooks/useMenu";
+import { Helmet } from "react-helmet";
 
 function Menu() {
   const menu = useMenu();
@@ -16,6 +17,9 @@ function Menu() {
 
   return (
     <div>
+      <Helmet>
+        <title>Bistro boss | Menu</title>
+      </Helmet>
       <MenuSection
         cover={menuBg}
         title="Our Menu"

@@ -6,12 +6,16 @@ import PopularMenu from "./PopularMenu";
 import SectionTitle from "../../Components/SectionTitle";
 import CallUs from "./CallUs";
 import useMenu from "../../Hooks/useMenu";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const menu = useMenu();
   const menus = menu.filter((item) => item.category == "popular");
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Bistro boss | Home</title>
+      </Helmet>
       <Slider />
       <div className="w-3/4 mx-auto mt-10">
         <Categories />

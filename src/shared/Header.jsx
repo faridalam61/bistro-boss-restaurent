@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Header() {
-  const {user, logOut} = useContext(AuthContext)
-const navigate = useNavigate()
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const menuItems = (
     <>
       <li>
@@ -14,15 +14,15 @@ const navigate = useNavigate()
         <Link to="/menu">Menu</Link>
       </li>
       <li>
-        <Link to="/order">Order</Link>
+        <Link to="/order/Salad">Order</Link>
       </li>
     </>
   );
-  const handleLogout = ()=>{
-logOut()
-.then(()=> navigate('/login'))
-.catch(error => console.log(error.message))
-  }
+  const handleLogout = () => {
+    logOut()
+      .then(() => navigate("/login"))
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div className="navbar fixed bg-black z-20 text-white opacity-50">
       <div className="navbar-start">
@@ -56,11 +56,15 @@ logOut()
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        {
-          user ? <button onClick={handleLogout} className="btn">Logout</button> : <Link to="/login" className="btn">Get started</Link>
-        }
-        
-        
+        {user ? (
+          <button onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="btn">
+            Get started
+          </Link>
+        )}
       </div>
     </div>
   );

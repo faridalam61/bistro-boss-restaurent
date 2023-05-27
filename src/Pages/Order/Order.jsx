@@ -6,6 +6,7 @@ import menuBg from "../../assets/menu/banner3.jpg";
 import { useParams } from "react-router-dom";
 import ProductCard from "../Order/ProductCard";
 import useMenu from "../../Hooks/useMenu";
+import { Helmet } from "react-helmet";
 
 function Order() {
   const menu = useMenu();
@@ -22,6 +23,9 @@ function Order() {
   console.log(activeTab);
   return (
     <div>
+      <Helmet>
+        <title>Bistro boss | Order</title>
+      </Helmet>
       <MenuSection
         cover={menuBg}
         title="Order"
@@ -40,35 +44,35 @@ function Order() {
           </TabList>
 
           <TabPanel>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
               {salad.map((item) => (
                 <ProductCard key={item._id} item={item} />
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
               {pizza.map((item) => (
                 <ProductCard key={item._id} item={item} />
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
               {soup.map((item) => (
                 <ProductCard key={item._id} item={item} />
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
               {dessert.map((item) => (
                 <ProductCard key={item._id} item={item} />
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
               {drinks.map((item) => (
                 <ProductCard key={item._id} item={item} />
               ))}
