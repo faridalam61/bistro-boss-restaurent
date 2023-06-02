@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useCart from "../Hooks/useCart";
 
 function Header() {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart()
   const navigate = useNavigate();
   const menuItems = (
     <>
@@ -15,6 +17,9 @@ function Header() {
       </li>
       <li>
         <Link to="/order/Salad">Order</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/mycart">Cart: {cart?.length || 0}</Link>
       </li>
     </>
   );

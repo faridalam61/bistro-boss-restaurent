@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useCart from "../../Hooks/useCart";
 
 function ProductCard({ item }) {
   const { name, image, price, recipe,_id } = item;
+  const [,refetch] = useCart()
   const navigate = useNavigate()
   const {user} = useContext(AuthContext)
   const handleAddtoCart = (name)=>{
@@ -35,6 +37,7 @@ function ProductCard({ item }) {
       .then(res => res.json())
       .then(result =>{
         if(result.insertedId){
+          refetch()
           Swal.fire({
             position: 'top-center',
             icon: 'success',
