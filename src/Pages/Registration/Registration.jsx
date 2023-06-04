@@ -3,6 +3,7 @@ import login from "../../assets/others/authentication1.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { Result } from "postcss";
 
 function Registration() {
   const navigate = useNavigate();
@@ -14,9 +15,23 @@ function Registration() {
     const pass = form.password.value;
     const name = form.name.value;
     const photo = form.photo.value;
-    console.log(email, pass, name, photo);
+
     createUser(email, pass)
-      .then((res) => navigate("/"))
+      .then((res) => {
+        const saveUser = {name,email}
+        fetch('http://localhost:5000/users',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(saveUser)
+        })
+        .then(res => res.json())
+        .then(result => {
+          console.log(result)
+          navigate("/")
+        })
+      })
       .catch((error) => alert(error.message));
   };
   return (

@@ -35,7 +35,7 @@ function Cart() {
       
     }
   return (
-    <div>
+    <div className='w-full px-10'>
         <div className='flex gap-6 justify-between items-center mb-8'>
         <h2 className='uppercase text-xl'>Total Item: {cart.length}</h2>
         <h2 className='uppercase text-xl'>Total:  ${total}</h2>
@@ -43,7 +43,7 @@ function Cart() {
         </div>
 
         <div className="overflow-x-auto">
-  <table className="table">
+  <table className="table w-full">
     {/* head */}
     <thead>
       <tr>
